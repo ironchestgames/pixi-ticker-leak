@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Text } from "react-pixi-fiber";
+import { Container, Sprite, Text } from "react-pixi-fiber";
+import * as PIXI from "pixi.js";
 
 class App extends Component {
   state = {
@@ -17,7 +18,16 @@ class App extends Component {
 
   render() {
     return (
-      <Text text={this.state.elapsedMs} x={100} y={100} />
+      <Container>
+        <Sprite
+          x={this.state.elapsedMs % 800}
+          y={this.state.elapsedMs / 600}
+          texture={PIXI.Texture.WHITE}
+          width={50}
+          height={50}
+          />
+        <Text text={this.state.elapsedMs} x={100} y={100} />
+      </Container>
     )
   }
 }
